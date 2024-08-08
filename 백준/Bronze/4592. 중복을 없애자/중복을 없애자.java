@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.LinkedList;
 
 public class Main {
     static final String SEPARATOR = " ";
@@ -10,9 +9,8 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuilder sb = new StringBuilder();
 
-        int N, x;
+        int N, prev, x;
         String [] input;
-        LinkedList <Integer> list = new LinkedList<>();
 
         while (true) {
             input = br.readLine().split(SEPARATOR);
@@ -21,19 +19,15 @@ public class Main {
                 br.close();
                 break;
             }
-            list.add(Integer.parseInt(input[1]));
-
+            sb.append(prev = Integer.parseInt(input[1])).append(SEPARATOR);
             for (int i = 2; i <= N; i++) {
                 x = Integer.parseInt(input[i]);
-                if (list.peekLast() == x)
+                if (prev == x)
                     continue;
-                list.add(x);
+                sb.append(x).append(SEPARATOR);
+                prev = x;
             }
-
-            for (final int e: list)
-                sb.append(e).append(SEPARATOR);
             sb.append(SUFFIX);
-            list.clear();
         }
         bw.write(sb.toString());
         bw.close();

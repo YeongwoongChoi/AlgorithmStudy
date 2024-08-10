@@ -8,8 +8,7 @@
     + 시간: 2s
     + 메모리: 128MB
   ## 풀이 방법
-  + TreeSet 이용
-      + implements NavigableSet extends SortedSet)
+  + TreeSet 이용 (implements NavigableSet extends SortedSet)
       + Red-Black Tree 구조로 데이터 저장
       + TreeSet<T> 에서 구현한 메서드들 존재 (lower_bound, upper_bound 관련)
         + T lower(T e): set에서 e <b>미만</b>의 데이터들 중 가장 큰 값 반환

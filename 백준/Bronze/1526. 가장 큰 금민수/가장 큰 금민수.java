@@ -1,9 +1,6 @@
 import java.io.*;
-import java.util.TreeSet;
 
 public class Main {
-    static final int MAX_RANGE = 1000000;
-
     static boolean isTarget(String s) {
         final int length = s.length();
         boolean flag = true;
@@ -16,14 +13,18 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        TreeSet <Integer> set = new TreeSet<>();
-        for (int i = 4; i <= MAX_RANGE; i++) {
-            if (isTarget(String.valueOf(i)))
-                set.add(i);
-        }
         int N = Integer.parseInt(br.readLine());
         br.close();
-        bw.write(String.valueOf(set.floor(N)));
+
+        String s;
+        while (N > 0) {
+            s = String.valueOf(N);
+            if (isTarget(s)) {
+                bw.write(s);
+                break;
+            }
+            N--;
+        }
         bw.close();
     }
 }
